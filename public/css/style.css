@@ -1,0 +1,22 @@
+body {
+    position: relative;
+}
+#text-area {
+    position: fixed;
+    padding: 10px;
+    bottom: 10px;
+    width: 50%;
+    margin: 5%;
+    left: 0px;
+}
+#go {
+    position: fixed;
+    padding: 10px;
+    bottom: 10px;
+    right: 5%;
+    margin: 5%;
+    z-index: 10;
+}
+#message-field > p {
+    line-break: auto;
+}

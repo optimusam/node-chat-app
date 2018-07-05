@@ -8,4 +8,4 @@ describe('genMessage', () => {
         expect(res).to.have.property('text', 'hello');
         expect(res).to.have.property('createdAt').that.is.a('number');
     });
-})
+});

@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat Zone</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <h1>Welcome to Chat Zone</h1>
+    <div id="message-field">
+
+    </div>
+
+    <form id="message-form">
+    <input type="text" name="message" id="text-area" placeholder="Message">   
+     <input type="submit" id="go">
+    </form>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/main.js"></script>
