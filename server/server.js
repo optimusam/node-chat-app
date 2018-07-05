@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const socketIO =require("socket.io");
+const genMessage = require("./utils/message");
 
 let server = http.createServer(app);
 let io = socketIO(server);
@@ -14,23 +15,13 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('New User Connected');
 
-    socket.emit('newMessage', {
-        from: "Welcome Bot!",
-        text: "Welcome to chat app!"
-    });
-    socket.broadcast.emit('newMessage', {
-        from: "Welcome Bot!",
-        text: "New User joined!"
-    });
+    socket.emit('newMessage', genMessage('Welcome Bot','Welcome to the chat room!'));
 
+    socket.broadcast.emit('newMessage', genMessage('Welcome Bot', 'New User has joined!'));
+    
     socket.on('createMessage', (message) => {
-        io.emit('newMessage', {
-                from: message.from,
-                text: message.text,
-                createdAt: new Date().toTimeString()
-            });
+        io.emit('newMessage', genMessage(message.from, message.text));
     });
-
 
     socket.on('disconnect', () => {
         console.log('User disconnected')
