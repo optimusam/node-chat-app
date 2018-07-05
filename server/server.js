@@ -14,15 +14,23 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('New User Connected');
 
-    socket.on('createMessage', (message) => {
-        console.log(message);
-    });
-    
     socket.emit('newMessage', {
-        from: "Taki",
-        text: "Damn Right bro!",
-        createdAt: (new Date()).toLocaleTimeString
+        from: "Welcome Bot!",
+        text: "Welcome to chat app!"
     });
+    socket.broadcast.emit('newMessage', {
+        from: "Welcome Bot!",
+        text: "New User joined!"
+    });
+
+    socket.on('createMessage', (message) => {
+        io.emit('newMessage', {
+                from: message.from,
+                text: message.text,
+                createdAt: new Date().toTimeString()
+            });
+    });
+
 
     socket.on('disconnect', () => {
         console.log('User disconnected')
