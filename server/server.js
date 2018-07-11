@@ -5,6 +5,7 @@ const app = express();
 const http = require("http");
 const socketIO =require("socket.io");
 const genMessage = require("./utils/message");
+const genLocation = require('./utils/location');
 
 let server = http.createServer(app);
 let io = socketIO(server);
@@ -23,6 +24,10 @@ io.on('connection', (socket) => {
         io.emit('newMessage', genMessage(message.from, message.text));
     });
 
+    socket.on('createLocation', (locationInfo) => {
+        io.emit('newLocation', genLocation(locationInfo.from, locationInfo.locationURL));
+    })
+    
     socket.on('disconnect', () => {
         console.log('User disconnected')
     });

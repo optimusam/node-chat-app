@@ -3,6 +3,7 @@ let messageForm = document.querySelector("#message-form");
 let submit = document.querySelector("#go");
 let messageField = document.querySelector("#message-field");
 let text = document.querySelector("#text-area");
+let sendLocationBtn = document.querySelector("#send-location");
 
 messageForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -10,14 +11,31 @@ messageForm.addEventListener('submit', function (e) {
         from: "Anonymous",
         text: text.value
     });
+    text.value = '';
 });
+
+sendLocationBtn.addEventListener('click', function () {
+    if('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+            let locationLink = `https://www.google.co.in/maps/place/ ${position.coords.latitude},${position.coords.longitude}`;
+            socket.emit('createLocation', {
+                from: "Admin",
+                locationURL: `${locationLink}`
+            });
+        });
+    }
+})
 
 socket.on('connect', function() {
     console.log('Connected to server');
 });
 
 socket.on('newMessage', function (message) {
-    messageField.insertAdjacentHTML('beforeend', `<p>${message.text} - ${message.from}</p>`);
+    messageField.insertAdjacentHTML('beforeend', `<p>${message.from}: ${message.text}</p>`);
+});
+
+socket.on('newLocation', function (locationInfo) {
+    messageField.insertAdjacentHTML('beforeend', `<p>${locationInfo.from}: <a href='${locationInfo.locationURL}' target='_blank'>User has shared his location</a>`);
 });
 
 socket.on('disconnect', function() {
