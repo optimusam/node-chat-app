@@ -16,6 +16,9 @@ messageForm.addEventListener('submit', function (e) {
 
 sendLocationBtn.addEventListener('click', function (e) {
     e.preventDefault();
+    let ua = navigator.userAgent.toLowerCase(),
+    isAndroid = ua.indexOf("android") > -1,
+    geoTimeout = isAndroid ? '15000' : '1000';
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
             let locationLink = `https://www.google.co.in/maps/place/ ${position.coords.latitude},${position.coords.longitude}`;
@@ -23,7 +26,7 @@ sendLocationBtn.addEventListener('click', function (e) {
                 from: "Admin",
                 locationURL: `${locationLink}`
             });
-        });
+        }, function () {alert('Unable to access location')}, {enableHighAccuracy: true, maximumAge: 3000, timeout:geoTimeout});
     }
 })
 
