@@ -14,7 +14,8 @@ messageForm.addEventListener('submit', function (e) {
     text.value = '';
 });
 
-sendLocationBtn.addEventListener('click', function () {
+sendLocationBtn.addEventListener('click', function (e) {
+    e.preventDefault();
     if('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
             let locationLink = `https://www.google.co.in/maps/place/ ${position.coords.latitude},${position.coords.longitude}`;
