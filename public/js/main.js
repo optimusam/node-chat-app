@@ -26,9 +26,10 @@ sendLocationBtn.addEventListener('click', function (e) {
                 from: "Admin",
                 locationURL: `${locationLink}`
             });
-        }, function () {alert('Unable to access location')}, {enableHighAccuracy: true, maximumAge: 3000, timeout:geoTimeout});
+        }, function () {alert('Unable to access location')},
+         {enableHighAccuracy: true, maximumAge: 3000, timeout:geoTimeout});
     }
-})
+});
 
 socket.on('connect', function() {
     console.log('Connected to server');
