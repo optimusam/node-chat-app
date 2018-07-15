@@ -9,12 +9,24 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div id="message-field"></div>
-    <form id="message-form">
-    <input type="text" name="message" class="in-form" id="text-area" placeholder="Message" autofocus autocomplete="off">
-    <input type="submit" id="go" class="in-form" value="Submit">    
-    <button id="send-location" class="in-form">Send Location</button>
-    </form>
+    <div class="wrapper">
+        <aside id="people">
+            <h1>People</h1>
+            <ul id="users">
+                <li>Sameer</li>
+                <li>Aritra</li>
+            </ul>
+        </aside>
+
+        <div id="message-field"></div>
+
+        <form id="message-form" action="#">
+        <input type="text" name="message" class="in-form" id="text-area" placeholder="Message" autofocus autocomplete="off">
+        <input type="submit" id="go" class="in-form" value="Submit">    
+        <button id="send-location" class="in-form">Send Location</button>
+        </form>
+
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/main.js"></script>

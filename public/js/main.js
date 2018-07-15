@@ -4,7 +4,6 @@ let submit = document.querySelector("#go");
 let messageField = document.querySelector("#message-field");
 let text = document.querySelector("#text-area");
 let sendLocationBtn = document.querySelector("#send-location");
-
 messageForm.addEventListener('submit', function (e) {
     e.preventDefault();
     socket.emit('createMessage', {
@@ -36,11 +35,11 @@ socket.on('connect', function() {
 });
 
 socket.on('newMessage', function (message) {
-    messageField.insertAdjacentHTML('beforeend', `<p>${message.from}: ${message.text}</p>`);
+    messageField.insertAdjacentHTML('beforeend', `<div><p>${message.from}: ${message.text}</p></div>`);
 });
 
 socket.on('newLocation', function (locationInfo) {
-    messageField.insertAdjacentHTML('beforeend', `<p>${locationInfo.from}: <a href='${locationInfo.locationURL}' target='_blank'>User has shared his location</a>`);
+    messageField.insertAdjacentHTML('beforeend', `<div><p>${locationInfo.from}: <a href='${locationInfo.locationURL}' target='_blank'>User has shared his location</a></div>`);
 });
 
 socket.on('disconnect', function() {
