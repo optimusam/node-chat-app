@@ -44,6 +44,9 @@ aside ul li {
     padding: 5px;
     display: inline-block;
 }
+#message-field div p a {
+    color: white;
+}
 #text-area {
     grid-area: message-input;
     height: 50px;
