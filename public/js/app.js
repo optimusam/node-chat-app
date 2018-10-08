@@ -5,7 +5,7 @@ let messageField = document.querySelector("#message-field");
 let text = document.querySelector("#text-area");
 let sendLocationBtn = document.querySelector("#send-location");
 let peopleList = document.querySelector("#users")
-
+let count = document.querySelector("#count")
 function scrollToBottom() {
     let messageFieldChildLen = messageField.children.length;
     let newMessage = messageField.children[messageFieldChildLen-1];
@@ -71,6 +71,7 @@ socket.on('disconnect', function() {
 
 socket.on('updateUserList', function(users) {
     peopleList.textContent = ''
+    count.textContent = users.length
     users.map(name => {
         peopleList.insertAdjacentHTML('beforeend', `<li>${name}</li>`)
     })

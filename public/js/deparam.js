@@ -1,5 +1,5 @@
 function spacify(str) {
-  return str.split('+').join(" ")
+  return str.split('+').join(" ").toLowerCase();
 }
 function deparam(s) {
   let searchArr = s.slice(1).split('&')
