@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chat Zone</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <aside id="people">
+            <h1>People</h1>
+            <ul id="users"></ul>
+        </aside>
+        <div id="message-field"></div>
+        <form id="message-form" action="#">
+        <input type="text" name="message" class="in-form" id="text-area" placeholder="Message" autofocus autocomplete="off">
+        <button type="submit" id="go" class="btn in-form" value="Submit"><i class="material-icons">send</i></button>
+        <button id="send-location" class="btn in-form"><i class="material-icons">add_location</i></button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/deparam.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>

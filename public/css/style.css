@@ -3,7 +3,10 @@ body {
     font-size: 16px;
     position: relative;
     margin: 0 auto;
+    background-color: #486796;
+
 }
+
 .wrapper {
     display: grid;
     font-size: 1.2em;
@@ -17,6 +20,7 @@ body {
     "sidebar message"
     "sidebar footer";
 }
+
 aside {
     grid-area: sidebar;
     background-color: #0c2954;
@@ -50,6 +54,7 @@ aside ul li {
 #text-area {
     grid-area: message-input;
     height: 50px;
+    color: white;
 }
 #go {
     grid-area: submit;
@@ -76,6 +81,7 @@ form {
         "message"
         "footer";
         grid-gap: 10px;
+        height: 100vh;
     }
     form {
         grid-template-columns: 1fr;
@@ -86,7 +92,8 @@ form {
         "location";
         height: 20px;
     }
-    aside {
+    aside#people{
         display: none;
     }
+
 }
